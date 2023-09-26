@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+
 import Header from "./components/Layout/Header/Header";
 import MealList from "./components/Meals/MealList/MealList";
 import MealsSummary from "./components/Meals/MealsSummary/MealsSumary";
 import Cart from "./components/Cart/Cart/Cart";
+
 import CartProvider from "./store/CartProvider";
 
 export interface IMealData {

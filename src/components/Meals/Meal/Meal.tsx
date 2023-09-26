@@ -1,7 +1,8 @@
 import { FC, useContext } from "react";
 
-import "./Meal.css";
 import MealItemForm from "../MealItemForm/MealItemForm";
+
+import "./Meal.css";
 import { IMealData } from "../../../App";
 import CartContext from "../../../store/cart-store";
 

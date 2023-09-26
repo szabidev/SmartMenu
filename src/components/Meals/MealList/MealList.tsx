@@ -1,7 +1,9 @@
-import React, { FC } from "react";
+import { FC } from "react";
+
 import Meal from "../Meal/Meal";
-import "./MealList.css";
 import Card from "../../UI/Card/Card";
+
+import "./MealList.css";
 import { IMealData } from "../../../App";
 
 const MealList: FC<{ pricedMeals: IMealData[] }> = ({ pricedMeals }) => {

@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import "./CartItem.css";
 
 interface CartItemProps {

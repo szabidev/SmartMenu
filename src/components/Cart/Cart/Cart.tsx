@@ -1,8 +1,10 @@
 import { FC, useContext } from "react";
-import CartContext, { CartItemData } from "../../../store/cart-store";
+
 import Modal from "../../UI/Modal/Modal";
 import Card from "../../UI/Card/Card";
 import CartItem from "../CartItem/CartItem";
+
+import CartContext, { CartItemData } from "../../../store/cart-store";
 import "./Cart.css";
 
 const Cart: FC<{ onClose: () => void }> = ({ onClose }) => {

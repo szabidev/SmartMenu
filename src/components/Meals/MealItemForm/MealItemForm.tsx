@@ -1,5 +1,7 @@
-import React, { FC, FormEvent, useState, useRef } from "react";
+import { FC, FormEvent, useState, useRef } from "react";
+
 import Input from "../../UI/Input/Input";
+
 import "./MealItemForm.css";
 
 const MealItemForm: FC<{ onAddToCart: (x: number) => void; id: number }> = ({
