@@ -1,15 +1,19 @@
-import React, { FC, useState } from "react";
+import { FC, useContext } from "react";
 
 import "./Meal.css";
 import MealItemForm from "../MealItemForm/MealItemForm";
 import { IMealData } from "../../../App";
+import CartContext from "../../../store/cart-store";
 
 const Meal: FC<IMealData> = ({ title, restaurantChain, price, id }) => {
-  const [itemAmount, setItemAmount] = useState<number[]>([]);
+  const cartCtx = useContext(CartContext);
 
   const handleAmount = (amountNumber: number) => {
-    setItemAmount((prevState) => {
-      return [...prevState, amountNumber];
+    cartCtx.addItem({
+      id: id,
+      title: title,
+      amount: amountNumber,
+      price: price,
     });
   };
 

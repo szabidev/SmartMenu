@@ -8,7 +8,6 @@
   color: white;
   display: flex;
   justify-content: space-between;
-  /* padding: 0 10px 0 20px; */
   align-items: center;
   padding: 0 ;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -16,11 +15,14 @@
 }
 
 .header-logo {
-  width: 250px;
   margin-left: 100px;
   cursor: pointer;
   font-size: 25px;
   font-weight: 300;
+}
+
+.header-btn {
+  margin-right: 100px;
 }
 
 .main-image {

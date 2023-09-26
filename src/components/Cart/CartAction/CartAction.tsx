@@ -1,9 +1,35 @@
-import React, { FC } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import "./CartAction.css";
+import CartContext from "../../../store/cart-store";
 
 const CartAction: FC<{ onShowCart: () => void }> = ({ onShowCart }) => {
+  const [buttonHighlight, setButtonHighlight] = useState<boolean>(false);
+  const cartCtx = useContext(CartContext);
+  const { items } = cartCtx;
+
+  const numberOfCartItems = items.reduce((currNum: number, item: any) => {
+    return currNum + item.amount;
+  }, 0);
+
+  const btnClass = `button header-btn ${buttonHighlight ? "bump" : ""}`;
+
+  useEffect(() => {
+    if (items.length === 0) {
+      return;
+    }
+    setButtonHighlight(true);
+
+    const timer = setTimeout(() => {
+      setButtonHighlight(false);
+    }, 300);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [items]);
+
   return (
-    <button className={"button"} onClick={onShowCart}>
+    <button className={btnClass} onClick={onShowCart}>
       <span className={"icon"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +40,7 @@ const CartAction: FC<{ onShowCart: () => void }> = ({ onShowCart }) => {
         </svg>
       </span>
       <span>Your Cart</span>
-      <span className={"badge"}>3</span>
+      <span className={"badge"}>{numberOfCartItems}</span>
     </button>
   );
 };

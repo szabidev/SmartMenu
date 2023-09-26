@@ -4,19 +4,7 @@ import "./MealList.css";
 import Card from "../../UI/Card/Card";
 import { IMealData } from "../../../App";
 
-// export interface MealProps {
-//   id: number;
-//   name: string;
-//   description: string;
-//   price: number;
-// }
-
-const MealList: FC<{ showCart: () => void; pricedMeals: IMealData[] }> = ({
-  showCart,
-  pricedMeals,
-}) => {
-  console.log(pricedMeals);
-
+const MealList: FC<{ pricedMeals: IMealData[] }> = ({ pricedMeals }) => {
   return (
     <section className="meals">
       <Card>

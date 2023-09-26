@@ -3,6 +3,7 @@ import Header from "./components/Layout/Header/Header";
 import MealList from "./components/Meals/MealList/MealList";
 import MealsSummary from "./components/Meals/MealsSummary/MealsSumary";
 import Cart from "./components/Cart/Cart/Cart";
+import CartProvider from "./store/CartProvider";
 
 export interface IMealData {
   id: number;
@@ -20,7 +21,7 @@ export interface IMealData {
 
 function App() {
   const [data, setData] = useState<IMealData[]>([]);
-  const [showCart, setShowCart] = useState<boolean>(true);
+  const [showCart, setShowCart] = useState<boolean>(false);
   const API_KEY = "af3619212f18453886fbff02db9fe3c2";
   const BASE_URL = "https://api.spoonacular.com/food/menuItems/search?apiKey=";
 
@@ -28,7 +29,6 @@ function App() {
     fetch(`${BASE_URL + API_KEY}&query=burger&number=20`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.menuItems);
         setData(data.menuItems);
       });
   }, []);
@@ -47,12 +47,12 @@ function App() {
   };
 
   return (
-    <>
-      {showCart && <Cart onClose={hideCartHandler} cartItems={pricedMeals} />}
+    <CartProvider>
+      {showCart ? <Cart onClose={hideCartHandler} /> : <></>}
       <Header onShowCart={showCartHandler} />
       <MealsSummary />
-      <MealList showCart={showCartHandler} pricedMeals={pricedMeals} />
-    </>
+      <MealList pricedMeals={pricedMeals} />
+    </CartProvider>
   );
 }
 

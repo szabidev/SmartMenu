@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import CartAction from "../../Cart/CartAction/CartAction";
 import "./Header.css";
 import mealsImage from "../../../assets/meals.jpg";

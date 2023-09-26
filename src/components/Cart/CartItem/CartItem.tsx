@@ -1,8 +1,9 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import "./CartItem.css";
 
 interface CartItemProps {
-  name: string;
+  id: number;
+  title: string;
   price: number;
   amount: number;
   onRemove: () => void;
@@ -10,7 +11,7 @@ interface CartItemProps {
 }
 
 const CartItem: FC<CartItemProps> = ({
-  name,
+  title,
   price,
   amount,
   onRemove,
@@ -19,9 +20,9 @@ const CartItem: FC<CartItemProps> = ({
   return (
     <li className="cart-item">
       <div>
-        <h2>{name}</h2>
+        <h2>{title}</h2>
         <div className="cart-item__summary">
-          <span className="cart-item__price">{price}</span>
+          <span className="cart-item__price">${price.toFixed(2)}</span>
           <span className="cart-item__amount">x {amount}</span>
         </div>
       </div>

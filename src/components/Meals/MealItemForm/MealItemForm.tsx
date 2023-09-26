@@ -24,7 +24,6 @@ const MealItemForm: FC<{ onAddToCart: (x: number) => void; id: number }> = ({
           return;
         }
 
-        console.log(enteredAmountNumber);
         onAddToCart(enteredAmountNumber);
       }
     }
