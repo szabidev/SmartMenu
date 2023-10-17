@@ -1,18 +1,17 @@
 import { FC, useContext } from "react";
 
 import MealItemForm from "../MealItemForm/MealItemForm";
-
+import { IMealData } from "../MealList/MealList";
 import "./Meal.css";
-import { IMealData } from "../../../App";
 import CartContext from "../../../store/cart-store";
 
-const Meal: FC<IMealData> = ({ title, restaurantChain, price, id }) => {
+const Meal: FC<IMealData> = ({ name, description, price, id }) => {
   const cartCtx = useContext(CartContext);
 
   const handleAmount = (amountNumber: number) => {
     cartCtx.addItem({
       id: id,
-      title: title,
+      name: name,
       amount: amountNumber,
       price: price,
     });
@@ -21,8 +20,8 @@ const Meal: FC<IMealData> = ({ title, restaurantChain, price, id }) => {
   return (
     <li className="meal">
       <div className="meal-item__info">
-        <p className="meal-item__title">{title}</p>
-        <p className="meal-item__description">{restaurantChain}</p>
+        <p className="meal-item__title">{name}</p>
+        <p className="meal-item__description">{description}</p>
         <p className="meal-item__price">${price}</p>
       </div>
       <div>

@@ -3,8 +3,8 @@ import { FC } from "react";
 import "./CartItem.css";
 
 interface CartItemProps {
-  id: number;
-  title: string;
+  id: string;
+  name: string;
   price: number;
   amount: number;
   onRemove: () => void;
@@ -12,7 +12,7 @@ interface CartItemProps {
 }
 
 const CartItem: FC<CartItemProps> = ({
-  title,
+  name,
   price,
   amount,
   onRemove,
@@ -21,7 +21,7 @@ const CartItem: FC<CartItemProps> = ({
   return (
     <li className="cart-item">
       <div>
-        <h2>{title}</h2>
+        <h2>{name}</h2>
         <div className="cart-item__summary">
           <span className="cart-item__price">${price.toFixed(2)}</span>
           <span className="cart-item__amount">x {amount}</span>

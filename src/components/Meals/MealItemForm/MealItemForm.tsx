@@ -4,7 +4,7 @@ import Input from "../../UI/Input/Input";
 
 import "./MealItemForm.css";
 
-const MealItemForm: FC<{ onAddToCart: (x: number) => void; id: number }> = ({
+const MealItemForm: FC<{ onAddToCart: (x: number) => void; id: string }> = ({
   onAddToCart,
   id,
 }) => {

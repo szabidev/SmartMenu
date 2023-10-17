@@ -1,10 +1,10 @@
-import { FC, useReducer } from "react";
+import { FC, ReactNode, useReducer } from "react";
 
 import { cartReducer, defaultCartState } from "./cart-reducer";
 import CartContext from "./cart-store";
 
 const CartProvider: FC<{
-  children: JSX.Element | JSX.Element[] | undefined | null;
+  children: ReactNode;
 }> = ({ children }) => {
   const [cartState, dispatchCartAction] = useReducer(
     cartReducer,
@@ -14,11 +14,14 @@ const CartProvider: FC<{
   const addItemToCartHandler = (item: any) => {
     dispatchCartAction({ type: "ADD", item: item });
   };
-  const removeItemFromCartHandler = (id: number) => {
+  const removeItemFromCartHandler = (id: string) => {
     const itemToRemove = cartState.items.find((item) => item.id === id);
     if (itemToRemove) {
       dispatchCartAction({ type: "REMOVE", item: itemToRemove });
     }
+  };
+  const clearCartHandler = () => {
+    dispatchCartAction({ type: "CLEAR" });
   };
 
   const cartContext = {
@@ -26,6 +29,7 @@ const CartProvider: FC<{
     totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
+    clearCart: clearCartHandler,
   };
 
   return (

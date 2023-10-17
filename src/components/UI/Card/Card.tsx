@@ -1,9 +1,9 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 
 import "./Card.css";
 
 interface CardProps {
-  children?: JSX.Element | JSX.Element[] | string;
+  children?: ReactNode;
 }
 
 const Card: FC<CardProps> = ({ children }) => {

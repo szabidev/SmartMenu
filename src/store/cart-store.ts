@@ -2,16 +2,17 @@ import React from "react";
 
 export interface CartItemData {
   amount: number;
-  id: number;
+  id: string;
   price: number;
-  title: string;
+  name: string;
 }
 
 const CartContext = React.createContext({
   items: [] as CartItemData[],
   totalAmount: 0,
   addItem: (item: CartItemData) => {},
-  removeItem: (id: number) => {},
+  removeItem: (id: string) => {},
+  clearCart: () => {},
 });
 
 export default CartContext;

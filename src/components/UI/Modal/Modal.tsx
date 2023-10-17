@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react";
+import { FC, Fragment, ReactNode } from "react";
 import ReactDOM from "react-dom";
 
 import "./Modal.css";
@@ -8,7 +8,7 @@ const Backdrop: FC<{ onClose: () => void }> = ({ onClose }) => {
 };
 
 const ModalOverlay: FC<{
-  children: string | JSX.Element | JSX.Element | undefined;
+  children: ReactNode;
 }> = ({ children }) => {
   return (
     <div className="modal">
@@ -20,7 +20,7 @@ const ModalOverlay: FC<{
 const portalElement = document.getElementById("overlays");
 
 const Modal: FC<{
-  children: string | JSX.Element | JSX.Element | undefined;
+  children: ReactNode | null;
   onClose: () => void;
 }> = ({ children, onClose }) => {
   return (
